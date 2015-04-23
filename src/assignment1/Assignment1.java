@@ -16,7 +16,7 @@ import java.util.Scanner;
  * @author 041406846
  */
 public class Assignment1 {
-    final static double[] conversionRate = new double[5];                       // Array holding data for conversion rates
+    final static double[] conversionRate = new double[6];                       // Array holding data for conversion rates
     
     public static void main(String[] args){
         conversionRate[0] = 2.54;                                               // Variable for conversion cm to inch 
@@ -24,6 +24,7 @@ public class Assignment1 {
         conversionRate[2] = 0.453592;                                           // Variable for conversion pound to kg
         conversionRate[3] = 33.8;
         conversionRate[4] = 1.60;
+        conversionRate[5] = 30.48;
         
         int choice = 0;
         Scanner sc = new Scanner(System.in);                                    // initializing Scanner object to read input from keyboard
@@ -35,7 +36,8 @@ public class Assignment1 {
             System.out.println("3. Convert from Pound to Kilogram");
             System.out.println("4. Convert from Celsius to Farenheiht");
             System.out.println("5. Convert from Miles to Kilometres");
-            System.out.println("6. Exit program");
+            System.out.println("6. Convert from cm to feet");
+            System.out.println("7. Exit program");
             
             choice = sc.nextInt();                                              //read input from keyboard
             
@@ -79,12 +81,21 @@ public class Assignment1 {
                     + " kilometres");                                           //Displaying the answer
                 System.out.println("--------------------------------------");   // Seperator
             }
-                else if(choice == 6){
+            else if(choice == 6)                                                //This is a code that will be processed when the user input is 5
+            {
+                System.out.println("Input the value in cm");                    //This code will ask the user to insert the value of the miles to be converted
+                double cm = sc.nextDouble();                                 //Converting the user input into a double value
+                double output = cm / conversionRate[5];                      //This is the equation for miles into kilometres
+                System.out.println("The converted value " + "is " + round(output,2)
+                    + " feet");                                                 //Displaying the answer
+                System.out.println("--------------------------------------");
+            }
+                else if(choice == 7){
                 System.out.println("Program terminates");       
                 System.exit(0);                                                 //to terminate whole process
             }  else {                                                           //this IF statement executes if input value is not 1, 2, 3, 4 or 5
             }
-        } while (choice != 6);                                                  // condition to run looping
+        } while (choice != 7);                                                  // condition to run looping
     }
     
     public static double round(double value, int places) { // for rounding into two digits after decimals
